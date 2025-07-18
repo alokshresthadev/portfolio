@@ -1,0 +1,30 @@
+body {
+  background: #000;
+  color: #0f0;
+  font-family: monospace;
+  margin: 0;
+  padding: 1rem;
+}
+
+.terminal {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.prompt {
+  color: #0f0;
+}
+
+.input-line {
+  display: flex;
+}
+
+input {
+  background: none;
+  border: none;
+  color: #0f0;
+  font-family: monospace;
+  font-size: 1rem;
+  outline: none;
+  flex: 1;
+}

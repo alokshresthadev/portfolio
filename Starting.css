@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.main_starting {
+  border: 2px solid #00FF00;
+  border-radius: 2px;
+  padding: 50px;
+}
+
+.header {
+  text-align: center;
+  color: #00FF00;
+  font-family: Consolas, monospace;
+  font-size: 100px;
+}
+
+.format_chooser {
+  color: #00FF00;
+  font-family: Consolas, monospace;
+  font-size: 25px;
+  margin-top: 20px;
+}
+
+.CLI_chooser,
+.GUI_chooser {
+  color: #00FF00;
+  font-family: Consolas, monospace;
+  font-size: 20px;
+  margin-top: 10px;
+}
