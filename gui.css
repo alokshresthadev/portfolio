@@ -3,10 +3,13 @@ html {
   scroll-behavior: smooth;
 }
 
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* outline: 1px solid red !important; */
 }
 section {
   min-height: 100vh;  /* full viewport height */
@@ -169,100 +172,7 @@ a:active {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .part-1 {
-    flex-direction: row;
-    gap: 20px;
-    padding: 20px;
-    align-items: center;
-    
-  }
 
-
-  .hamburger {
-    display: block;
-  }
-
-  .table {
-    display: none;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    padding: 20px 0;
-  }
-
-  .table.active {
-    display: block;
-  }
-
-  .flexbar {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .section-wrapper {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 0 20px;
-  }
-
-  .section-2 {
-    text-align: center;
-    margin-right: 0;
-    margin-top: 40px;
-  }
-
-  .section-1,
-  .section-2 {
-    width: 100%;
-  }
-
-  .about {
-    font-size: 32px;
-  }
-
-  .about-1,
-  .about-2 {
-    font-size: 18px;
-  }
-
-  .section-2 {
-    font-size: 18px;
-  }
-  
-  /* About section responsive */
-  .about-me-start {
-    margin-left: 20px;
-  }
-  
-  .about-me-header {
-    width: 90vw;
-    font-size: 24px;
-  }
-  
-  .group-of-hacker-para {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .hacker-image {
-    width: 90vw;
-    margin-top: 20px;
-  }
-  
-  .hacker-para {
-    margin-top: 30px;
-    margin-left: 0;
-    width: 90vw;
-    font-size: 30px;
-    color:#878E99;
-    font-weight: 600;
-  }
-}
 
 .facebook {
   margin-right: 4%;
@@ -312,6 +222,9 @@ a:active {
     width: 40vw;
     margin-top: 40px;
     opacity: 0.8;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 .group-of-hacker-para{
     display: flex;
@@ -390,6 +303,145 @@ a:active {
     border-radius: 8px; /* Optional: adds rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: adds subtle shadow */
     transition: all 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+@media (max-width: 768px) {
+  html,body{
+    overflow-x: hidden;
+  }
+  .part-1 {
+    flex-direction: row;
+    gap: 0px;
+    padding: 20px;
+    align-items: center;
+    
+  }
+  @media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+  }
+
+  .section-wrapper {
+    padding: 0 20px;
+  }
+
+  .about-me-start {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .services-main {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .about-me-header,
+  .hacker-para {
+    width: 100%;
+  }
+
+  .supermain {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-header,
+  .service-body {
+    width: 100%;
+  }
+
+  .hacker-image {
+    width: 100%;
+    max-width: 90vw;
+  }
+}
+
+
+
+  .hamburger {
+    display: block;
+
+  }
+
+  .table {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px 0;
+  }
+
+  .table.active {
+    display: block;
+  }
+
+  .flexbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .section-wrapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .section-2 {
+    text-align: center;
+    margin-right: 0;
+    margin-top: 40px;
+  }
+
+  .section-1,
+  .section-2 {
+    width: 100%;
+  }
+
+  .about {
+    font-size: 32px;
+  }
+
+  .about-1,
+  .about-2 {
+    font-size: 18px;
+  }
+
+  .section-2 {
+    font-size: 18px;
+  }
+  
+  /* About section responsive */
+  .about-me-start {
+    margin-left: 20px;
+  }
+  
+  .about-me-header {
+    width: 90vw;
+    font-size: 24px;
+  }
+  
+  .group-of-hacker-para {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hacker-image {
+    width: 90px;
+    margin-top: 20px;
+  }
+  
+  .hacker-para {
+    margin-top: 30px;
+    margin-left: 0;
+    width: 90vw;
+    font-size: 30px;
+    color:#878E99;
+    font-weight: 600;
+  }
 }
 
 /* Adjust for mobile */
