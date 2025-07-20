@@ -1,0 +1,68 @@
+/* Navbar Wrapper */
+.navbar {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: black;
+  z-index: 1000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+/* Navbar Layout */
+.part-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 70px 0 70px;
+}
+
+/* Logo / Name */
+.NAME {
+  font-weight: 825;
+  font-size: 25px;
+}
+
+/* Links */
+.table {
+  display: flex;
+  margin-top: 5px;
+  font-family: "Outfit", sans-serif;
+  font-weight: 800;
+}
+
+.flexbar {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: aquamarine;
+  cursor: pointer;
+}
+
+a:active {
+  opacity: 0.5;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .part-1 {
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    align-items: center;
+  }
+
+  .flexbar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
