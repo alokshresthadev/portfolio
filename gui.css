@@ -100,6 +100,7 @@ a:active {
   min-width: 280px;
   text-align: right;
   font-size: 20px;
+  margin-top: 5%;
 }
 
 .second-part {
@@ -123,15 +124,9 @@ a:active {
 }
 
 .about {
-<<<<<<< HEAD
-    font-size: 70px;
+    font-size: 75px;
     font-weight: 600;
     margin-bottom: 20px;
-=======
-  font-size: 40px;
-  font-weight: 600;
-  margin-bottom: 20px;
->>>>>>> 0a6c90fc04d2ec556082a8034d73a9b497a196e9
 }
 
 .about-1 {
@@ -210,5 +205,8 @@ a:active {
   margin-right: 5%;
 }
 .total-flex{
-    margin-top: 10em;
+    margin-top: 2em;
+}
+.welcome{
+    align-items: center;
 }
