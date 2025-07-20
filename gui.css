@@ -1,30 +1,17 @@
+/* Reset */
 * {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     background-color: black;
-}
-
-.white,
-.welcome,
-.gray,
-.NAME {
+    color: white;
     font-family: "Outfit", sans-serif;
 }
 
-a {
-    text-decoration: none;
-    color: white;
-}
-
-.NAME {
-    font-weight: 825;
-    font-size: 25px;
-    margin: 30px;
-    margin-bottom: 50px;
-}
-
+/* Typography */
 .white,
 .text-welcome {
     color: white;
@@ -34,23 +21,88 @@ a {
     color: #878E99;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: aquamarine;
+    cursor: pointer;
+}
+
+a:active {
+    opacity: 0.5;
+}
+
+/* Layout Containers */
+.GUI-START {
+    display: flex;
+}
+
+.main-part-1 {
+    display: block;
+    width: 100%;
+}
+
+/* Header */
 .part-1 {
     display: flex;
-    gap: 600px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 70px 0 70px;
 }
 
-.part-2 {
+.NAME {
+    font-weight: 825;
+    font-size: 25px;
+}
+
+/* Navigation */
+.table {
+    display: flex;
+    margin-top: 5px;
+    font-family: "Outfit", sans-serif;
+    font-weight: 800;
+}
+
+.flexbar {
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+}
+
+/* Main Welcome Section */
+.total-flex {
+    margin-top: 60px;
+}
+
+/* Welcome Content */
+.section-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 0 70px;
+    gap: 20px;
+}
+
+.section-1 {
+    flex: 1;
+    min-width: 280px;
+}
+
+.section-2 {
+    flex: 1;
+    min-width: 280px;
+    text-align: right;
+    font-size: 20px;
+}
+
+/* Content Blocks */
+.second-part {
     display: flex;
     flex-direction: column;
-    margin-left: 70px;
-}
-
-.sub-part-1 {
-    display: block;
-}
-
-.second-part {
-    margin-left: 70px;
 }
 
 .welcome {
@@ -71,7 +123,6 @@ a {
 .about {
     font-size: 40px;
     font-weight: 600;
-    display: flex;
     margin-bottom: 20px;
 }
 
@@ -95,51 +146,51 @@ a {
     margin-bottom: 15px;
 }
 
-.main-part-1{
-    display: block;
+/* Responsive Section */
+@media (max-width: 768px) {
+    .part-1 {
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px;
+        align-items: center;
+    }
+
+    .flexbar {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .section-wrapper {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .section-2 {
+        text-align: center;
+        margin-right: 0;
+    }
+
+    .section-1,
+    .section-2 {
+        width: 100%;
+    }
+
+    .about {
+        font-size: 32px;
+    }
+
+    .about-1,
+    .about-2 {
+        font-size: 18px;
+    }
+
+    .section-2 {
+        font-size: 18px;
+    }
 }
 
-.section-1{
-    display: flex;
-    gap: 200px;
-}
-.section-2{
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    font-size: 20px;
-    margin-right: 25px;
-    /* margin-left:500px */
-}
-.GUI-START{
-    display: flex;
-    gap:0;
 
-}
-.flex-item{
-    width: 100px;
-    flex:0 0 auto;
-}
-.total-flex{
-    margin-top: 60px;
-}
-.table{
-    display: flex;
-    margin-top: 35px;
-     font-family: "Outfit", sans-serif;
-     font-weight: 800;
-}
-.flexbar{
-    display: flex;
-    font-size: 13px;
-    gap:20px
-}
-
-a:hover{
-    color:  aquamarine;
-    cursor: pointer;
-    
-}
-a:active{
-    opacity: 0.5;
+.part-1{
+    margin-bottom: 150px;
 }
