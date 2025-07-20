@@ -12,3 +12,26 @@
             navbarLinks.classList.remove('active');
         });
     });
+
+
+    //image change
+
+    function changeimage(type){
+        const service_image = document.querySelector('.service-image-bug');
+        if(type === 'web'){
+            service_image.src="mainweb.jpg"
+        }
+        else if(type === 'api'){
+            service_image.src= "api.png"
+        }
+        else if(type === 'recon'){
+            service_image.src= "recon.png"
+        }
+        else if(type === 'burp'){
+            service_image.src = "burp.jpg"
+        }
+        else if(type === 'bounty'){
+            service_image.src = "bounty.jpg"
+        }
+
+    }
