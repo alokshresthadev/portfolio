@@ -1,18 +1,19 @@
-const options = document.querySelectorAll('.CLI_chooser, .GUI_chooser');
+document.addEventListener('DOMContentLoaded', function() {
+  const options = document.querySelectorAll('.option');
   let selectedIndex = 0;
 
+  // Update selection visually
   function updateSelection() {
     options.forEach((opt, index) => {
       if (index === selectedIndex) {
-        opt.style.backgroundColor = '#00FF00';
-        opt.style.color = 'black';
+        opt.classList.add('selected');
       } else {
-        opt.style.backgroundColor = 'transparent';
-        opt.style.color = '#00FF00';
+        opt.classList.remove('selected');
       }
     });
   }
 
+  // Keyboard navigation
   document.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowDown') {
       selectedIndex = (selectedIndex + 1) % options.length;
@@ -21,12 +22,26 @@ const options = document.querySelectorAll('.CLI_chooser, .GUI_chooser');
       selectedIndex = (selectedIndex - 1 + options.length) % options.length;
       updateSelection();
     } else if (e.key === 'Enter') {
-      if (selectedIndex === 0) {
-        window.location.href = 'cli.html'; // replace with your actual CLI page
-      } else if (selectedIndex === 1) {
-        window.location.href = 'gui.html'; // replace with your actual GUI page
-      }
+      const selectedOption = options[selectedIndex];
+      window.location.href = selectedOption.dataset.target;
     }
   });
 
+  // Mobile touch support
+  options.forEach(option => {
+    option.addEventListener('click', function() {
+      window.location.href = this.dataset.target;
+    });
+    
+    option.addEventListener('touchstart', function() {
+      this.classList.add('selected');
+    });
+    
+    option.addEventListener('touchend', function() {
+      this.classList.remove('selected');
+    });
+  });
+
+  // Initialize selection
   updateSelection();
+});

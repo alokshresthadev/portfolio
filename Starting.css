@@ -10,32 +10,80 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 20px;
 }
 
 .main_starting {
   border: 2px solid #00FF00;
   border-radius: 2px;
-  padding: 50px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 800px;
 }
 
 .header {
   text-align: center;
   color: #00FF00;
   font-family: Consolas, monospace;
-  font-size: 100px;
+  font-size: clamp(2.5rem, 10vw, 6rem); /* Responsive font size */
 }
 
 .format_chooser {
   color: #00FF00;
   font-family: Consolas, monospace;
-  font-size: 25px;
-  margin-top: 20px;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  margin-top: 1rem;
+  text-align: center;
 }
 
-.CLI_chooser,
-.GUI_chooser {
+.CLI_GUI_starting {
+  margin-top: 2rem;
+}
+
+.option {
   color: #00FF00;
   font-family: Consolas, monospace;
-  font-size: 20px;
-  margin-top: 10px;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 4px;
+}
+
+.option:hover, .option.selected {
+  background-color: #00FF00;
+  color: black;
+}
+
+.mobile-instructions {
+  color: #00AA00;
+  font-family: Consolas, monospace;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 1.5rem;
+  display: none;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .main_starting {
+    padding: 1.5rem;
+  }
+  
+  .mobile-instructions {
+    display: block;
+  }
+  
+  .option {
+    padding: 1rem;
+    margin: 0.75rem 0;
+  }
+}
+
+.hint{
+  font-family: Consolas, monospace;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+    color: #00FF00;
+
 }

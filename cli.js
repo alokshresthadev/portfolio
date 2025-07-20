@@ -4,7 +4,7 @@ const output = document.getElementById("output");
 
 // ======== Your Fake File System ========
 const fileSystem = {
-  "/": ["about", "projects", "contact"],
+  "/": ["about", "valid-bugs", "contact"],
   "/valid-bugs": ["hubspot-report.txt","hubspot-repot1.txt"],
   "/about": ["about.txt"],
   "/contact": ["contact.txt"],
@@ -81,6 +81,8 @@ function runCommand(cmd) {
     case "banner":
       showBanner();
       break;
+    case "exit":
+      window.location.href="index.html";
     default:
       addLine(`Command not found: ${base}`);
   }
@@ -111,6 +113,7 @@ function changeDir(dir) {
     }
   }
 }
+
 
 function catFile(file) {
   if (fileSystem[currentDir] && fileSystem[currentDir].includes(file)) {

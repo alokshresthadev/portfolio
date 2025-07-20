@@ -28,3 +28,14 @@ input {
   outline: none;
   flex: 1;
 }
+#output {
+  white-space: pre-wrap;
+  word-break: break-word;    
+  overflow-wrap: anywhere;   
+  line-height: 1.5;          
+}
+
+pre {
+  margin: 0.5em 0;          
+  font-family: monospace;   
+}
