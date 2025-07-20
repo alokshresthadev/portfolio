@@ -52,6 +52,7 @@ a:active {
   z-index: 1000;
   padding-top: 10px;
   padding-bottom: 10px;
+ 
 }
 
 .part-1 {
@@ -78,6 +79,15 @@ a:active {
   gap: 20px;
   font-size: 13px;
 }
+
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+
 
 /* Main Section */
 .total-flex {
@@ -159,26 +169,49 @@ a:active {
 /* Responsive */
 @media (max-width: 768px) {
   .part-1 {
-    flex-direction: column;
+    flex-direction: row;
     gap: 20px;
-    padding: 30px;
+    padding: 20px;
     align-items: center;
+    margin-right:7%;
+  }
+
+
+  .hamburger {
+    display: block;
+  }
+
+  .table {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px 0;
+  }
+
+  .table.active {
+    display: block;
   }
 
   .flexbar {
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
   }
 
   .section-wrapper {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 0 20px;
   }
 
   .section-2 {
     text-align: center;
     margin-right: 0;
+    margin-top: 40px;
   }
 
   .section-1,
@@ -197,6 +230,35 @@ a:active {
 
   .section-2 {
     font-size: 18px;
+  }
+  
+  /* About section responsive */
+  .about-me-start {
+    margin-left: 20px;
+  }
+  
+  .about-me-header {
+    width: 90vw;
+    font-size: 24px;
+  }
+  
+  .group-of-hacker-para {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hacker-image {
+    width: 90vw;
+    margin-top: 20px;
+  }
+  
+  .hacker-para {
+    margin-top: 30px;
+    margin-left: 0;
+    width: 90vw;
+    font-size: 30px;
+    color:#878E99;
+    font-weight: 600;
   }
 }
 
@@ -247,4 +309,15 @@ a:active {
     width: 40vw;
     margin-top: 40px;
     opacity: 0.8;
+}
+.group-of-hacker-para{
+    display: flex;
+
+}
+.hacker-para{
+    margin-top:80px;
+    margin-left:3%;
+    font-size: 26px;
+    color:#878E99;
+    font-weight: 600;
 }
