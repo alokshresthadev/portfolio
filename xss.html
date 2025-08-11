@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>XSS Test</title>
+</head>
+<body>
+  <script>
+    alert("XSS triggered from open redirect chain! Domain: " + document.domain);
+    // You could also log document.cookie for testing (on your own site only)
+    // console.log(document.cookie);
+  </script>
+</body>
+</html>
