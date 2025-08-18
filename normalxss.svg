@@ -1,0 +1,7 @@
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">
+  <script type="text/javascript">
+    alert('XSS Demo');
+    // This will execute immediately when the SVG is rendered
+  </script>
+  <rect width="300" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+</svg>
