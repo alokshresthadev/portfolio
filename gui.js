@@ -19,19 +19,19 @@
     function changeimage(type){
         const service_image = document.querySelector('.service-image-bug');
         if(type === 'web'){
-            service_image.src="mainweb.jpg"
+            service_image.src="photos/mainweb.jpg"
         }
         else if(type === 'api'){
-            service_image.src= "api.png"
+            service_image.src= "photos/api.png"
         }
         else if(type === 'recon'){
-            service_image.src= "recon.png"
+            service_image.src= "photos/recon.png"
         }
         else if(type === 'burp'){
-            service_image.src = "burp.jpg"
+            service_image.src = "photos/burp.jpg"
         }
         else if(type === 'bounty'){
-            service_image.src = "bounty.jpg"
+            service_image.src = "photos/bounty.jpg"
         }
 
     }

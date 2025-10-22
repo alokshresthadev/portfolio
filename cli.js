@@ -11,9 +11,9 @@ const fileSystem = {
   content: {
     "about.txt": "I'm Alok Shrestha, a curious and analytical cybersecurity enthusiast with a deep fascination for uncovering vulnerabilities, dissecting attack vectors, and advancing defensive strategies through research. My goal is to evolve into a Security Researcher, where I can contribute to the global cybersecurity community by investigating emerging threats, developing proof-of-concepts, and sharing knowledge to fortify digital ecosystems.",
     "contact.txt": `
-      Email: alokshrestha12386@gmail.com
+      Email: caocao2dev@gmail.com
       GitHub: github.com/alokshresthadev
-      Instagram: instagram.com/aroku998
+      Instagram: instagram.com/alok_stha_cao
     `,
     "hubspot-report.txt": "The problem was with the export user functionality. Apparantly the functionality was in trial mode and the developers forgot about it being in the trial phase and simply ran it in production area. Here one could simply extract the api from burner account and use that to extract pii and 2fa of other user. Since the policy strictly marked the same portal IDOR to be p4, i only got 50$ from it   ",
 
