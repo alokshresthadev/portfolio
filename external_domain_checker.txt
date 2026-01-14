@@ -1,0 +1,166 @@
+
+import requests
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin, urlparse
+import sys
+
+requests.packages.urllib3.disable_warnings()
+
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64)"
+}
+
+TIMEOUT = 8
+
+visited = set()
+external_links = set()
+external_domains = set()
+
+external_link_sources = {}      # external_url -> set(source_pages)
+external_domain_sources = {}    # domain -> set(source_pages)
+
+SKIP_EXTENSIONS = (
+    ".pdf", ".doc", ".docx", ".xls", ".xlsx",
+    ".txt", ".zip", ".rar", ".7z",
+    ".exe", ".bin",
+    ".jpg", ".jpeg", ".png", ".gif", ".svg", ".webp",
+    ".css", ".js", ".map",
+    ".mp3", ".mp4", ".avi", ".mkv", ".ppt", ".pptx"
+)
+
+
+# ---------- HELPERS ----------
+
+def ensure_scheme(url):
+    if not url.startswith(("http://", "https://")):
+        return "https://" + url
+    return url
+
+
+def normalize_url(url):
+    return url.rstrip("/")
+
+
+def is_same_domain(url, base):
+    return urlparse(url).netloc == urlparse(base).netloc
+
+
+def is_external(url, base):
+    return urlparse(url).netloc and not is_same_domain(url, base)
+
+
+def should_skip(url):
+    return url.startswith(("mailto:", "tel:", "javascript:"))
+
+
+def is_file(url):
+    return urlparse(url).path.lower().endswith(SKIP_EXTENSIONS)
+
+
+def extract_domain(url):
+    return urlparse(url).netloc.lower()
+
+
+# ---------- CRAWLER ----------
+
+def crawl(url, base):
+    url = normalize_url(url)
+
+    if url in visited or is_file(url):
+        return
+
+    visited.add(url)
+    print(f"[+] Crawling: {url}")
+
+    try:
+        r = requests.get(url, headers=HEADERS, timeout=TIMEOUT, verify=False)
+    except Exception:
+        return
+
+    if "text/html" not in r.headers.get("Content-Type", ""):
+        return
+
+    soup = BeautifulSoup(r.text, "html.parser")
+
+    links = set()
+
+    # <a href>
+    for tag in soup.find_all("a", href=True):
+        links.add(tag.get("href").strip())
+
+    # JS navigation (data-target)
+    for tag in soup.find_all(attrs={"data-target": True}):
+        links.add(tag.get("data-target").strip())
+
+    for link in links:
+        if should_skip(link):
+            continue
+
+        full_url = normalize_url(urljoin(url, link))
+
+        if is_external(full_url, base):
+            domain = extract_domain(full_url)
+
+            external_links.add(full_url)
+            external_domains.add(domain)
+
+            # Track link -> source
+            external_link_sources.setdefault(full_url, set()).add(url)
+
+            # Track domain -> source
+            external_domain_sources.setdefault(domain, set()).add(url)
+
+        else:
+            crawl(full_url, base)
+
+
+# ---------- MAIN ----------
+
+def main():
+    if len(sys.argv) != 2:
+        print(f"Usage: {sys.argv[0]} subdomains.txt")
+        sys.exit(1)
+
+    try:
+        with open(sys.argv[1], "r") as f:
+            subdomains = [line.strip() for line in f if line.strip()]
+    except FileNotFoundError:
+        print("[-] Subdomain file not found")
+        sys.exit(1)
+
+    for sub in subdomains:
+        sub = ensure_scheme(sub)
+
+        print(f"\n==== Starting crawl for {sub} ====\n")
+
+        visited.clear()
+        external_links.clear()
+        external_domains.clear()
+        external_link_sources.clear()
+        external_domain_sources.clear()
+
+        crawl(sub, sub)
+
+        print(f"\n[+] External links found: {len(external_links)}")
+        print(f"[+] External domains found: {len(external_domains)}\n")
+
+        # -------- SAVE DOMAIN + SOURCE --------
+
+        with open("external_domains_with_source.txt", "a") as f:
+            for domain, sources in external_domain_sources.items():
+                for source in sources:
+                    f.write(f"{domain} <- {source}\n")
+
+        # -------- SAVE LINK + SOURCE --------
+
+        with open("external_links_with_source.txt", "a") as f:
+            for link, sources in external_link_sources.items():
+                for source in sources:
+                    f.write(f"{source} -> {link}\n")
+
+        print("[+] Saved external_domains_with_source.txt")
+        print("[+] Saved external_links_with_source.txt\n")
+
+
+if __name__ == "__main__":
+    main()
